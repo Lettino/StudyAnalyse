@@ -343,21 +343,7 @@
                     $('#grade').selectpicker('refresh');//该方法刷新bootstrap-select
                 });
 //        selectChange($('#grade'),$('#class'),Info.grade)
-                $("#grade").change(function () {
-//            console.log(vvv.grade_id);
-                        $('#class').empty();
-                        $.each(data.grade,function (index,value) {
-                            if($("#grade").val()==value.grade_id){
-//                        alert($("#grade").val());
-                                $.each(value.class,function (index,value) {
-                                    var option = $("<option>").val(value.class_id).text(value.class_name);
-                                    $('#class').append(option);
-                                })
-                            }
-                        });
-                        $('#class').selectpicker('refresh');
-                    }
-                )
+
             }
         });
 
