@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="56478477-8232-48c3-9661-be85fa300907" name="Default" comment="" />
+    <list default="true" id="56478477-8232-48c3-9661-be85fa300907" name="Default" comment="12-12">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackGround/Import/ImportGrade.html" afterPath="$PROJECT_DIR$/src/BackGround/Import/ImportGrade.html" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -17,7 +20,7 @@
       <file leaf-file-name="AddStudent.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackGround/Import/AddStudent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6842">
+            <state relative-caret-position="0">
               <caret line="358" column="4" lean-forward="false" selection-start-line="358" selection-start-column="4" selection-end-line="358" selection-end-column="17" />
               <folding>
                 <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -28,26 +31,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ImportClass.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ImportClass.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/BackGround/Import/ImportClass.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6996">
+            <state relative-caret-position="760">
               <caret line="365" column="7" lean-forward="false" selection-start-line="365" selection-start-column="7" selection-end-line="365" selection-end-column="7" />
               <folding>
                 <element signature="e#13285#15244#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ImportGrade.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/BackGround/Import/ImportGrade.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="27" column="108" lean-forward="false" selection-start-line="27" selection-start-column="108" selection-end-line="27" selection-end-column="108" />
-              <folding>
-                <element signature="e#13378#14110#0" expanded="false" />
-                <element signature="e#13705#14100#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -202,7 +192,7 @@
       <workItem from="1512788937988" duration="14232000" />
       <workItem from="1512956797326" duration="4288000" />
       <workItem from="1513043155312" duration="2238000" />
-      <workItem from="1513045425565" duration="372000" />
+      <workItem from="1513045425565" duration="1031000" />
     </task>
     <task id="LOCAL-00001" summary="12-12">
       <created>1513045796101</created>
@@ -215,7 +205,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52545000" />
+    <option name="totallyTimeSpent" value="53204000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -305,6 +295,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="13" column="31" lean-forward="false" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -643,19 +634,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackGround/Import/ImportClass.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6996">
-          <caret line="365" column="7" lean-forward="false" selection-start-line="365" selection-start-column="7" selection-end-line="365" selection-end-column="7" />
-          <folding>
-            <element signature="e#13285#15244#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/BackGround/Import/AddStudent.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6842">
+        <state relative-caret-position="0">
           <caret line="358" column="4" lean-forward="false" selection-start-line="358" selection-start-column="4" selection-end-line="358" selection-end-column="17" />
           <folding>
             <element signature="n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
@@ -667,11 +648,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackGround/Import/ImportGrade.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="27" column="108" lean-forward="false" selection-start-line="27" selection-start-column="108" selection-end-line="27" selection-end-column="108" />
+        <state relative-caret-position="319">
+          <caret line="221" column="55" lean-forward="true" selection-start-line="221" selection-start-column="55" selection-end-line="221" selection-end-column="55" />
           <folding>
-            <element signature="e#13378#14110#0" expanded="false" />
-            <element signature="e#13705#14100#0" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/BackGround/Import/ImportClass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="365" column="7" lean-forward="false" selection-start-line="365" selection-start-column="7" selection-end-line="365" selection-end-column="7" />
+          <folding>
+            <element signature="e#13285#15244#0" expanded="false" />
           </folding>
         </state>
       </provider>
