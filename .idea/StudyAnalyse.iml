@@ -2,9 +2,9 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <excludeFolder url="file://$MODULE_DIR$/../StudyAnalyse-2017-12-9/.tmp" />
-      <excludeFolder url="file://$MODULE_DIR$/../StudyAnalyse-2017-12-9/temp" />
-      <excludeFolder url="file://$MODULE_DIR$/../StudyAnalyse-2017-12-9/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

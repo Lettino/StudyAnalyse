@@ -18,7 +18,7 @@ var class_analyse_type = function(paper_id , class_id){
 
 	 			var temp = {};
 	 			temp.degree = (result[i].score / result[i].total_goal).toFixed(4)*100;
-	 			temp.kp_name = result[i].question_type_name;
+	 			temp.question_type = result[i].question_type_name;
 	 			caculate_type_array.push(temp);
 	 		}
 

@@ -47,12 +47,15 @@ function getExcel(obj,para1,para2,para3) {//导入
                 school_id:para1,
                 grade_id:para2,
                 class_id:para3,
-                string_excel:JSON.stringify([{"考号":"11111","姓名":"王琛超","性别":"0","城乡":"1"},{"考号":"22222","姓名":"周家勇","性别":"0","城乡":"1"},{"考号":"33333","姓名":"陈冲","性别":"0","城乡":"1"}])
+                string_excel:JSON.stringify([{"考号":"2143","姓名":"王琛超","性别":"0","城乡":"1"}])
             },
             jsonp:"callback",
             jsonpCallback:"callback",
             success :function(data){
+                if(data.value==true)
                 alert("插入成功")
+                if(data.value==false)
+                {alert("插入失败")}
             },
             error:function () {
                 alert("请检查网络状态")

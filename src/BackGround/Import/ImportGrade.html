@@ -224,7 +224,7 @@
                         </select>
                         </div>
                         <div class="form-group">
-                            <label >添加学校</label>
+                            <label >添加年级</label>
                             <input type="email" placeholder="请输入年级，如(六年级)" class="form-control">
                         </div>
                         <button type="submit" class="btn btn-fill btn-info">确认提交</button>
@@ -305,27 +305,21 @@
 <!--<script>Initial()</script>-->
 <script>
     $(function(){
-        $("#school").empty();
-        $("#school").selectpicker('refresh');
+
         $.ajax({
             type :"GET",
-            url :"http://localhost:3003/inforList_mysql",
+            url :"http://localhost:3003/getAllGrade_mysql/",
             dataType: 'jsonp',
-            data :{
-                school_id:localStorage.getItem("teacherInfo").school_id,
-            },
             jsonp:"callback",
             jsonpCallback:"callback",
             success :function(data){
-                console.log(JSON.stringify(data));
-                if(data=="false"){
-                    alert("该年级已经存在")
-                }
-                else {
-                    var option = $("<option>").val(data.school_id).text(data.school_name);
+                console.log("test"+JSON.stringify(data));
+                $("#school").empty();
+                $.each(data,function (index,value) {
+                    var option = $("<option>").val(value.school_id).text(value.school_name);
                     $("#school").append(option);
-                    $('#school').selectpicker('refresh');
-                }
+                })
+                $("#school").selectpicker('refresh');
             }
         });
     });
@@ -350,8 +344,6 @@
 <script src="../js/sweetalert2.js"></script>
 <!-- Wizard Plugin    -->
 <script src="../js/jquery.bootstrap.wizard.min.js"></script>
-<!--  Bootstrap Table Plugin    -->
-<script src="../js/bootstrap-table.js"></script>
 <!-- Light Bootstrap Dashboard Core javascript and methods -->
 <script src="../js/light-bootstrap-dashboard.js"></script>
 <!--   Sharrre Library    -->

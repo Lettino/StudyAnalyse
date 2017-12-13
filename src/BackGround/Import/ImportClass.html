@@ -223,21 +223,21 @@
         <form method="#" action="#">
             <div class="form-group">
                 <label>选择学校</label>
-                <select name="school" class="selectpicker" data-title="请选择一个学校" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                <select id="school" class="selectpicker" data-title="请选择一个学校" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                     <option value="zh">学校A</option>
 
                 </select>
             </div>
             <div class="form-group">
                 <label>选择年级</label>
-                <select name="grade" class="selectpicker" data-title="请选择一个年级" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                <select id="grade" class="selectpicker" data-title="请选择一个年级" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
                     <option value="zh">年级A</option>
 
                 </select>
             </div>
             <div class="form-group">
                 <label >添加班级</label>
-                <input type="email" placeholder="请输入年级，如(一班)" class="form-control">
+                <input id="class" type="text" placeholder="请输入年级，如(一班)" class="form-control">
             </div>
             <button type="submit" class="btn btn-fill btn-info">确认提交</button>
         </form>
@@ -319,35 +319,37 @@
     $(function(){
         $("#school").empty();
         $.ajax({
+
             type :"GET",
-            url :"http://localhost:3003/inforList_mysql",
+            url :"http://localhost:3003/getAllClass_mysql/",
             dataType: 'jsonp',
-            data :{
-                school_id:localStorage.getItem("teacherInfo").school_id,
-            },
             jsonp:"callback",
             jsonpCallback:"callback",
             success :function(data){
-                console.log(JSON.stringify(data));
+                $("#school").empty();
+                $.each(data,function (index,value) {
+                    var option = $("<option>").val(value.school_id).text(value.school_name);
+                    $("#school").append(option);
+                })
+                $("#school").selectpicker('refresh');
+                $("#school").change(function () {
+                    $("#grade").empty();
+                    $.each(data,function (index,value) {
+                        if($("#school").val()==value.school_id){
+                        console.log(value);
+                            $.each(value.grades,function (index,value) {
+                                console.log(value)
+                                var option = $("<option>").val(value.grade_id).text(value.grade_name);
+                                $('#grade').append(option);
+                            })
+                            $('#grade').selectpicker('refresh');
+                        }
+                    });
 
-                var option = $("<option>").val(data.school_id).text(data.school_name);
-                $("#school").append(option);
-                $('#school').selectpicker('refresh');
-                $("#school").change(function() {  //点击时产生二级列表
-                    console.log(typeof $(this).val())
-                    $('#grade').empty();
-                    $.each(data.grade,function (index,value) {
-                        var option = $("<option>").val(value.grade_id).text(value.grade_name);
-                        $("#grade").append(option);
-                    })
-                    $('#grade').selectpicker('refresh');//该方法刷新bootstrap-select
-                });
-//        selectChange($('#grade'),$('#class'),Info.grade)
-
+                })
             }
+
         });
-
-
 
     });
 </script>

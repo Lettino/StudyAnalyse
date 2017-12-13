@@ -1,3 +1,4 @@
+//wcc
 var connection = require("../DBConnection/DBConnection");
 
 exports.addStudent = function(request,response){
@@ -6,7 +7,6 @@ exports.addStudent = function(request,response){
     var grade_id = request.query.grade_id;
     var studentList = request.query.string_excel;
     studentList = JSON.parse(studentList);
-    console.log(studentList);
      //school_id = JSON.stringify(school_id);
     // grade_id = JSON.stringify(grade_id);
     // class_id = JSON.stringify(class_id);
@@ -32,8 +32,8 @@ exports.addStudent = function(request,response){
             console.log("INSERT ERROR-", err.message);
         }
         else{
-            console.log("INSERT SUCCESS 恭喜你插入成功");
-            response.send("callback(" + "{value:'success'}" +")");
+            console.log("INSERT SUCCESS 学生信息插入成功");
+           response.send("callback(" + "{value:true}" +")");
         }
     })
 

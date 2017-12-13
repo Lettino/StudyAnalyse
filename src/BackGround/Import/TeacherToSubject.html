@@ -223,10 +223,41 @@
                     <form method="#" action="#">
                         <div class="form-group">
                             <label >请输入教师工号</label>
-                            <input type="text" name="teacher"  placeholder="请输入教师工号,如(172010101)" class="form-control"
+                            <input type="text" id="teacher"  placeholder="请输入教师工号,如(172010101)" class="form-control"
                             aria-required="true" aria-invalid="true">
                         </div>
-                        <button type="button" class="btn btn-fill btn-info">点击查询</button>
+                        <button type="button" class="btn btn-fill btn-info" onclick="checkTeacher($('#teacher').val())">点击查询</button>
+                    </form>
+                </div>
+                <div id="choiceSubject" class="col-md-6">
+                    <form method="#" action="#">
+                        <div class="form-group">
+                            <p >
+                                <legend id="teachName">教师信息</legend>
+                            </p>
+                            <label>姓名/所属学校</label>
+                            <input type="text" id="teacherInfo"  placeholder="这里显示教师信息" class="form-control"
+                                   aria-required="true" aria-invalid="true" disabled="disabled">
+                        </div>
+                        <div class="form-group">
+                            <label>选择年级</label>
+                            <select id="grade" class="selectpicker" data-title="请选择一个年级" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                <option value="zh">年级A</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>选择班级</label>
+                            <select id="class" class="selectpicker" data-title="请选择一个班级" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                <option value="zh">班级A</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>选择科目</label>
+                            <select id="subject" class="selectpicker" data-title="请选择一个科目" data-style="btn-default btn-block" data-menu-style="dropdown-blue">
+                                <option value="zh">科目A</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-fill btn-info">确认提交</button>
                     </form>
                 </div>
                 <!--删除已存在的学校-->
@@ -348,7 +379,10 @@
 <script src="../MyJS/ClickName.js"></script>
 <script src="../MyJS/util.js"></script>
 <!--<script>Initial()</script>-->
-
+<script src="../MyJS/InitImport.js"></script>
+<script>
+    $("#teacherInfo").attr("value",'周佳勇'+"         "+'杭州电子科技大学');
+</script>
 </body>
 
 <!--   Core JS Files and PerfectScrollbar library inside jquery.ui   -->

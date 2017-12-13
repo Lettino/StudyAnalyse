@@ -345,6 +345,7 @@
 <script>
     //点击提交Excel
     function clickInput() {
+
         var schoolID,classID,gradeID;
         schoolID = $("#school").val();
         classID = $("#class").val();
@@ -360,10 +361,10 @@
         $("#school").empty();
         $.ajax({
             type :"GET",
-            url :"http://localhost:3003/inforList_mysql",
+            url :"http://localhost:3003/studentInforList_mysql",
             dataType: 'jsonp',
             data :{
-            school_id:localStorage.getItem("teacherInfo").school_id,
+            school_id:parseInt(localStorage.getItem("teacherInfo").school_id)
             },
             jsonp:"callback",
             jsonpCallback:"callback",
@@ -382,9 +383,7 @@
                     })
                     $('#grade').selectpicker('refresh');//该方法刷新bootstrap-select
                 });
-//        selectChange($('#grade'),$('#class'),Info.grade)
                 $("#grade").change(function () {
-//            console.log(vvv.grade_id);
                         $('#class').empty();
                         $.each(data.grade,function (index,value) {
                             if($("#grade").val()==value.grade_id){
@@ -393,9 +392,10 @@
                                     var option = $("<option>").val(value.class_id).text(value.class_name);
                                     $('#class').append(option);
                                 })
+                                $('#class').selectpicker('refresh');
                             }
                         });
-                        $('#class').selectpicker('refresh');
+
                     }
                 )
             }
@@ -576,30 +576,10 @@
         }
     });
     $("#input").on("fileuploaded", function (event, data, previewId, index) {
-//        console.log(data);
-//        if(data.response.success == true)
-//        {
-//            alert(data.files[index].name + "上传成功!");
-//            //关闭
-//            $(".close").click();
-//        }
-//        else{
-//            alert(data.files[index].name + "上传失败!" + data.response.message);
-//            //重置
-//            $("#excelFile").fileinput("clear");
-//            $("#excelFile").fileinput("reset");
-//            $('#excelFile').fileinput('refresh');
-//            $('#excelFile').fileinput('enable');
-//        }
-        alert("Hello");
-        getExcel(this);
+//
+//      }
     });
-    $("#input").on("filebatchselected", function(event, files) {
-        getExcel(this);
-    });
-    $('#input').on('filebatchuploaderror', function(event, data, msg) {
-        getExcel(this);
-    });
+
 </script>
 </body>
 

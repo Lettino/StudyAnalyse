@@ -14,8 +14,13 @@ var MultipleAnalyseRouter_mysql = require("../routers_mysql/MultipleAnalyseRoute
 var ImportInterface_mysql = require("../routers_mysql/ImportInterface.js");
 var RegisterRouter_mysql = require("../routers_mysql/RegisterRouter.js");
 var AllocateClassSubjectRouter_mysql = require("../routers_mysql/AllocateClassSubjectRouter.js");
-var InforListRouter_mysql = require("../routers_mysql/InforListRouter");
+
+
+//wcc
+var StudentInforListRouter_mysql = require("../routers_mysql/StudentInforListRouter");
 var AddStudentRouter_mysql = require("../routers_mysql/AddStudentRouter");
+var AddPaperRouter_mysql = require("../routers_mysql/AddPaperRouter");
+var PaperQuestionInforListRouter_mysql = require("../routers_mysql/PaperQuestionInforListRouter");
 
 var app = express();
 app.use(bodyParser.urlencoded({extended: false}));
@@ -24,7 +29,7 @@ app.use(bodyParser.json());
 app.use("/src" , express.static(__dirname));
 app.get('/', function (req,res) {
 	//onsole.log(__dirname);
-   res.redirect('../src/login.html');
+   res.redirect('../src/Login/login.html');
 });
 
 
@@ -48,12 +53,29 @@ app.get("/getAllSchool_mysql",ImportInterface_mysql.getAllSchool);
 app.get("/getAllGrade_mysql",ImportInterface_mysql.getAllGrade);
 app.get("/getAllClass_mysql",ImportInterface_mysql.getAllClass);
 app.get("/getAllSubject_mysql",ImportInterface_mysql.getAllSubject);
+app.get("/checkSchool_mysql" , ImportInterface_mysql.checkSchool);
+app.get("/addschool_mysql" , ImportInterface_mysql.addschool);
+app.get("/addgrade_mysql" , ImportInterface_mysql.addgrade);
+app.get("/addclass_mysql" , ImportInterface_mysql.addclass);
+app.get("/addclasssubject_mysql" , ImportInterface_mysql.addclasssubject);
 app.get("/register_mysql" , RegisterRouter_mysql.register);
 app.get("/allocatesubject_mysql", AllocateClassSubjectRouter_mysql.search_teacher_infor);
-app.get("/addstudent_mysql",AddStudentRouter_mysql.addStudent);
-app.get("/inforList_mysql",InforListRouter_mysql.inforList);
+app.get("/addknowlegdepoint_mysql" , AddPaperRouter_mysql.getKnowledgePoint);
+app.get("/checktwopoint_mysql" , AddPaperRouter_mysql.checkLevelTwoKnowledgePoint);
+app.get("/addleveltwopoint_mysql" , AddPaperRouter_mysql.addLevelTwoKnowledgePoint);
+app.get("/addlevelonepoint_mysql" , AddPaperRouter_mysql.addLevelOneKnowledgePoint);
+app.get("/addquestiontype_mysql" , AddPaperRouter_mysql.addQuestionType);
+app.get("/addthinkingtype_mysql" , AddPaperRouter_mysql.addThinkingType);
+app.get("/addabilityrequire_mysql" , AddPaperRouter_mysql.addAbilityRequire);
+
+//wcc
+app.get("/addStudent_mysql",AddStudentRouter_mysql.addStudent);
+app.get("/studentInforList_mysql",StudentInforListRouter_mysql.inforList);
+app.get("/addPaper_mysql",AddPaperRouter_mysql.addPaper);
+app.get("/paperQuestionInforList_mysql",PaperQuestionInforListRouter_mysql.PaperQuestionInforList);
+
 
 var server = app.listen(3003 , function(){
 
 	console.log("app is listening on port 3003!");
-});
+}); 

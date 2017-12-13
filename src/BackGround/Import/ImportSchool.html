@@ -123,53 +123,6 @@
                     </ul>
                 </div>
                 <ul class="nav navbar-nav navbar-right">
-                    <!--<li class="dropdown">-->
-                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-                            <!--<i class="fa fa-paper-plane"></i>-->
-                            <!--<p >-->
-                                <!--添加信息-->
-                                <!--<b class="caret"></b>-->
-                            <!--</p>-->
-                        <!--</a>-->
-                        <!--<ul class="dropdown-menu">-->
-                            <!--<li><a href="#">Create New Post</a></li>-->
-                            <!--<li><a href="#">Manage Something</a></li>-->
-                            <!--<li><a href="#">Do Nothing</a></li>-->
-                            <!--<li><a href="#">Submit to live</a></li>-->
-                            <!--<li class="divider"></li>-->
-                            <!--<li><a href="#">Another Action</a></li>-->
-                        <!--</ul>-->
-                    <!--</li>-->
-
-
-                    <!--<li>-->
-
-                        <!--<input type="file" name="x" style="display:none;" id="upLoadScore" onchange="getExcel(this)" />-->
-                        <!--<a href="javascript:void(0)"  onclick="$('#upLoadScore').click();return false;">-->
-                            <!--<i class="fa fa-upload"></i>-->
-                            <!--<p>上传成绩表</p>-->
-                        <!--</a>-->
-                    <!--</li>-->
-                    <!--<li class="dropdown">-->
-                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">-->
-                    <!--<i class="fa fa-bell-o"></i>-->
-                    <!--<span class="notification">5</span>-->
-                    <!--<p class="hidden-md hidden-lg">-->
-                    <!--Notifications-->
-                    <!--<b class="caret"></b>-->
-                    <!--</p>-->
-                    <!--</a>-->
-                    <!--<ul class="dropdown-menu">-->
-                    <!--<li><a href="#">Notification 1</a></li>-->
-                    <!--<li><a href="#">Notification 2</a></li>-->
-                    <!--<li><a href="#">Notification 3</a></li>-->
-                    <!--<li><a href="#">Notification 4</a></li>-->
-                    <!--<li><a href="#">Another notification</a></li>-->
-                    <!--</ul>-->
-                    <!--</li>-->
-
-
-
 
                     <li class="dropdown dropdown-with-icons">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -222,9 +175,9 @@
                     <form method="#" action="#">
                         <div class="form-group">
                             <label >添加学校</label>
-                            <input type="text" placeholder="请输入需要添加的学校名" class="form-control">
+                            <input id="school" type="text" placeholder="请输入需要添加的学校名" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-fill btn-info">确认提交</button>
+                        <button type="submit" class="btn btn-fill btn-info" onclick="checkSchool($('#school').val())">确认提交</button>
                     </form>
                 </div>
 <!--删除已存在的学校-->
@@ -276,53 +229,7 @@
                 <!--</div>-->
             </div>
         </div>
-        <!--<div class="col-xs-11">-->
-            <!--<form class="form-horizontal">-->
-                <!--<fieldset>-->
-                    <!--<div id="legend" class="">-->
-                        <!--<legend class="">添加学校</legend>-->
-                    <!--</div>-->
 
-
-                    <!--<div class="control-group">-->
-
-                        <!--&lt;!&ndash; Select Basic &ndash;&gt;-->
-                        <!--<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择 - 基本</font></font></label>-->
-                        <!--<div class="controls">-->
-                            <!--<select class="input-xlarge">-->
-                                <!--<option>输入</option></select>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-
-                    <!--<div class="control-group">-->
-
-                        <!--&lt;!&ndash; Select Multiple &ndash;&gt;-->
-                        <!--<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择 - 多个</font></font></label>-->
-                        <!--<div class="controls">-->
-                            <!--<select class="input-xlarge" multiple="multiple">-->
-                                <!--<option>输入</option>-->
-                                <!--<option>123</option>-->
-                                <!--<option>321</option></select>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                    <!--<div class="control-group">-->
-                        <!--<label class="control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按键</font></font></font></font></font></font></label>-->
-
-                        <!--&lt;!&ndash; Button &ndash;&gt;-->
-                        <!--<div class="controls">-->
-                            <!--<button class="btn btn-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">按键</font></font></font></font></font></font></button>-->
-                        <!--</div>-->
-                    <!--</div>-->
-
-                <!--</fieldset>-->
-            <!--</form>-->
-
-
-
-
-        <!--</div>-->
 
         </div>
     </div>
@@ -393,6 +300,7 @@
 <script src="../MyJS/ClickName.js"></script>
 <script src="../MyJS/util.js"></script>
 <!--<script>Initial()</script>-->
+<script src="../MyJS/InitImport.js"></script>
 
 </body>
 

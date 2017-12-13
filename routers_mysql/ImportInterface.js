@@ -77,7 +77,7 @@ exports.getSchool = function (request , response) {
 	});
 }
 
-var search_subject_for_subject =function(rs , response){
+/*var search_subject_for_subject =function(rs , response){
 
 	var sql = "select e.school_id as school_id , e.school_name as school_name , e.grade_id as grade_id , e.grade_name as grade_name , e.class_id as class_id , e.class_name as class_name , f.class_subject_id as subject_id , f.class_subject_name as subject_name from (select c.school_id as school_id , c.school_name as school_name , c.grade_id as grade_id , c.grade_name as grade_name , d.class_id as class_id , d.class_name as class_name from (select a.school_id as school_id , a.school_name as school_name , b.grade_id as grade_id , b.grade_name as grade_name from school as a left join grade as b on a.school_id = b.school_id) as c left join class as d on c.grade_id = d.grade_id) as e left join class_subject as f on e.class_id = f.class_id";
 	connection.query(sql , function(err , result){
@@ -113,7 +113,7 @@ var search_subject_for_subject =function(rs , response){
 
 
 	});
-}
+}*/
 
 var search_class_for_subject = function(rs, response){
 
@@ -141,7 +141,8 @@ var search_class_for_subject = function(rs, response){
 				}
 
 			}
-			search_subject_for_subject(rs , response);
+			response.send("callback(" + JSON.stringify(rs) +")");
+			//search_subject_for_subject(rs , response);
 		}
 
 	});
@@ -206,7 +207,7 @@ exports.getAllSubject = function(request , response){
 
 
 
-var search_class_for_class = function(rs, response){
+/*var search_class_for_class = function(rs, response){
 
 	var sql = "select c.school_id as school_id , c.school_name as school_name , c.grade_id as grade_id , c.grade_name as grade_name , d.class_id as class_id , d.class_name as class_name from (select a.school_id as school_id , a.school_name as school_name , b.grade_id as grade_id , b.grade_name as grade_name from school as a left join grade as b on a.school_id = b.school_id) as c left join class as d on c.grade_id = d.grade_id";
 	connection.query(sql , function(err , result){
@@ -237,7 +238,7 @@ var search_class_for_class = function(rs, response){
 
 	});
 
-}
+}*/
 
 var search_grade_for_class = function(rs, response){
 
@@ -260,8 +261,8 @@ var search_grade_for_class = function(rs, response){
 				
 				}
 			}
-			search_class_for_class(rs , response);
-			//response.send("callback(" + JSON.stringify(rs) +")");
+			//search_class_for_class(rs , response);
+			response.send("callback(" + JSON.stringify(rs) +")");
 		}
 
 	});
@@ -295,7 +296,7 @@ exports.getAllClass = function(request , response){
 }
 
 
-var search_grade = function(schools , response){
+/*var search_grade = function(schools , response){
 
 	var sql = "select * from school as a , grade  as b where a.school_id = b.school_id";
 	connection.query(sql , function(err , result){
@@ -329,7 +330,7 @@ var search_grade = function(schools , response){
 
 	});
 
-}
+}*/
 exports.getAllGrade = function(request , response){	
 	//两层先把第一层数据都找到
 	var sql = "select * from school";
@@ -340,13 +341,15 @@ exports.getAllGrade = function(request , response){
 			console.log(err);
 		}else{
 
-			search_grade(result , response);
+			//search_grade(result , response);
 
-			//response.send("callback(" + JSON.stringify(result) +")");
+			response.send("callback(" + JSON.stringify(result) +")");
 		}
 	});
 
 }
+
+//这个方法是得到现在已经有哪些学校
 exports.getAllSchool = function(request , response){
 
 	var sql = "select * from school";
@@ -356,6 +359,168 @@ exports.getAllSchool = function(request , response){
 			console.log(err);
 		}else{
 			response.send("callback(" + JSON.stringify(result) +")");
+		}
+
+	});
+}
+
+exports.checkSchool = function(request , response){
+
+	var school_name = request.query.school_name;
+	school_name = JSON.stringify(school_name);
+	var sql = "select * from school where school.school_name =" + school_name;
+	connection.query(sql , function(err , result){
+
+		if(err){
+			console.log(err);
+		}else{
+			if(result.length == 0){
+				response.send("callback(" + JSON.stringify('true')+')');
+			}else{
+				response.send('callback(' + JSON.stringify('false') +')');
+			}
+			
+		}
+	});
+
+}
+
+
+var insertSchool = function(school_name , response){
+
+	var sql = "insert into school set school_name =" + school_name;
+	connection.query(sql , function(err , result){
+		if(err){
+			console.log(err);
+		}else{
+			response.send("callback(" + "{value : true}" +")");
+		}
+	})
+
+}
+
+//添加学校  但是不能光相信前台校验  自己在后台还是再次校验
+exports.addschool = function(request , response){
+
+	var school_name = request.query.school_name;
+	school_name = JSON.stringify(school_name);
+	var sql = "select a.school_name  as school_name from school as a where a.school_name =" + school_name;
+	connection.query(sql, function(err , result){
+
+		if(err){
+			console.log(err);
+		}else{
+			if(result.length > 0){
+				response.send("callback(" + "{value : false}" +")");
+			}else{
+				insertSchool(school_name , response);
+			}
+		}
+
+	});
+}
+
+var insertGrade = function(school_id ,grade_name , response){
+
+	var sql = "insert into grade (school_id , grade_name) values("+school_id+" , "+grade_name +")";
+	connection.query(sql , function(err , result){
+		if(err){
+			console.log(err);
+		}else{
+			response.send("callback(" + "{value : true}" +")");
+		}
+	})
+
+}
+
+//添加年级
+exports.addgrade = function(request , response){
+	var school_id =  request.query.school_id;
+	var grade_name = request.query.grade_name;
+	grade_name = JSON.stringify(grade_name);
+	var sql = "select a.school_id as school_id , a.grade_name  as grade_name from grade as a where a.school_id =" + school_id +" and  a.grade_name = " + grade_name;
+	connection.query(sql, function(err , result){
+
+		if(err){
+			console.log(err);
+		}else{
+			if(result.length > 0){
+				response.send("callback(" + "{value : false}" +")");
+			}else{
+				insertGrade(school_id , grade_name , response);
+				//insertSchool(school_name , response);
+			}
+		}
+
+	});
+}
+
+var insertClass = function(grade_id , class_name , response){
+
+	var sql = "insert into class (grade_id , class_name) values("+grade_id+" , "+class_name +")";
+	connection.query(sql , function(err , result){
+		if(err){
+			console.log(err);
+		}else{
+			response.send("callback(" + "{value : true}" +")");
+		}
+	})
+
+}
+//添加班级
+exports.addclass = function(request , response){
+	var school_id =  request.query.school_id;
+	var grade_id = request.query.grade_id;
+	var class_name = request.query.class_name;
+	class_name = JSON.stringify(class_name);
+	var sql = "select a.grade_id as grade_id , a.class_name  as class_name from class as a where a.grade_id =" + grade_id +" and  a.class_name = " + class_name;
+	connection.query(sql, function(err , result){
+
+		if(err){
+			console.log(err);
+		}else{
+			if(result.length > 0){
+				response.send("callback(" + "{value : false}" +")");
+			}else{
+				insertClass(  grade_id , class_name , response);
+				//insertSchool(school_name , response);
+			}
+		}
+
+	});
+}
+var insertClassSubject = function(  class_id , class_subject_name , response){
+
+	var sql = "insert into class_subject (class_id , class_subject_name) values("+class_id+" , "+class_subject_name +")";
+	connection.query(sql , function(err , result){
+		if(err){
+			console.log(err);
+		}else{
+			response.send("callback(" + "{value : true}" +")");
+		}
+	})
+
+}
+
+//添加科目
+exports.addclasssubject = function(request , response){
+	var school_id =  request.query.school_id;
+	var grade_id = request.query.grade_id;
+	var class_id = request.query.class_id ;
+	var class_subject_name = request.query.class_subject_name;
+	class_subject_name = JSON.stringify(class_subject_name);
+	var sql = "select a.class_id as class_id , a.class_subject_name  as class_subject_name from class_subject as a where a.class_id =" + class_id +" and  a.class_subject_name = " + class_subject_name;
+	connection.query(sql, function(err , result){
+
+		if(err){
+			console.log(err);
+		}else{
+			if(result.length > 0){
+				response.send("callback(" + "{value : false}" +")");
+			}else{
+				insertClassSubject(  class_id , class_subject_name , response);
+				//insertSchool(school_name , response);
+			}
 		}
 
 	});
